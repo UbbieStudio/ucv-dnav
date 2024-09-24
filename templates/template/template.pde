@@ -1,3 +1,5 @@
+import java.util.Random;
+
 void setup() {
   size(400, 400);
   //stroke(255);
@@ -31,7 +33,12 @@ void main() {
   println(array.length);
   println(matrix.length);
   println(array);
-  println(PI);
+  println(Math.PI);
+  
+  Random rand = new Random();
+  println(rand.nextInt(10));
+  println(rand.nextDouble());
+  println(Math.random());
 }
 
 int suma(int a, int b) {
