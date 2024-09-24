@@ -21,15 +21,17 @@ void main() {
   double array[] = {1, 4, 7};
   double matrix[][] = {{1, 4, 7}, {6, 9, 13}};
 
-  System.out.println(suma(a, b));
-  System.out.println(v);
+  println(suma(a, b));
+  println(v);
 
-  System.out.println(sqrt(25));
-  System.out.println(pow(2, 8));
-  System.out.println(random(1));
+  println(sqrt(25));
+  println(pow(2, 8));
+  println(random(1));
   
+  println(array.length);
+  println(matrix.length);
   println(array);
-  printArray(matrix);
+  println(PI);
 }
 
 int suma(int a, int b) {
