@@ -39,6 +39,8 @@ void main() {
   println(rand.nextInt(10));
   println(rand.nextDouble());
   println(Math.random());
+  
+  println(str(3.15));
 }
 
 int suma(int a, int b) {

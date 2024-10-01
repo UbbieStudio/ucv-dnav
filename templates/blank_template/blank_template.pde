@@ -9,11 +9,12 @@ void draw() {
 }
 
 void main() {
-  // Aquí es donde escribiremos todo nuestro código
-  funcionInutil();
+  // Define una función que reciba un String y devuelva su longitud
+  println(longitud("Hola mundo"));
+  
 }
 
-// A partir de aquí donde definiremos todas las funciones que vayamos a crear
-void funcionInutil() {
-  println("Soy una función que no hace nada");
+int longitud(String s) {
+  int l = s.length();
+  return l;
 }

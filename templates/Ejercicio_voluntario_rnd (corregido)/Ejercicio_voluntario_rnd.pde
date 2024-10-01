@@ -15,7 +15,7 @@ void main() {
   */
   
   int ladosDado = 6;
-  int numTiradas = 1000000;
+  int numTiradas = 1000;
   
   
   
@@ -30,51 +30,40 @@ void main() {
   
 }
 
-// Esta función lanza dados de tantos lados como le indiquemos 'n' veces y almacena el resultado en un array.
 int[] lanzarDados(int lados, int n) {
   int[] tiradas = new int[n]; // La palabra clave 'new' CONSTRUYE un nuevo elemento del tipo indicado a continuación, en nuestro caso, un array de números enteros de 'n' dimensiones
   
-  /*###########################################
-  TU CÓDIGO HA DE IR AQUÍ ENTRE ESTAS LÍNEAS
-  ############################################*/
-  
-  /*##########################################*/
+  for(int i = 0; i < n; i++) {
+    tiradas[i] = dado(lados);
+  }
   
   return tiradas;
 }
 
-// Esta función recoge el vector con todas las tiradas, crea otro de tantas dimensiones como lados tengan los dados, y recuenta cuántas veces ha ocurrido cada tirada
 double[] recuentoTiradas(int lados, int[] tiradas) {
   double[] resultados = new double[lados];
   
-  /*###########################################
-  TU CÓDIGO HA DE IR AQUÍ ENTRE ESTAS LÍNEAS
-  ############################################*/
-  
-  /*##########################################*/
+  for(int i = 0; i < tiradas.length; i++) {
+    resultados[tiradas[i] - 1]++;
+  }
   
   return resultados;
 }
 
-// Esta función recoge el histograma (recuento de tiradas) y calcula qué porcentaje del total de tiradas supone cada uno.
 double[] calcularPorcentajes(int n, double[] histograma) {
   double[] porcentajes = new double[histograma.length];
   
-  /*###########################################
-  TU CÓDIGO HA DE IR AQUÍ ENTRE ESTAS LÍNEAS
-  ############################################*/
-  
-  /*##########################################*/
+  for(int i = 0; i < histograma.length; i++) {
+    porcentajes[i] = histograma[i] * 100 / n;
+  }
   
   return porcentajes;
 }
 
-// Esta función realiza una tirada aleatoria entre 1 y el número de lados del dado
 int dado(int lados) {
   return (int)((Math.floor(Math.random() * lados) + 1));
 }
 
-// Esta función simplemente muestra el resultado de ejecutar el programita de manera visual y agradable.
 void mostrarResultados(int n, double[] hist, double[] perc) {
   
   println("Número de tiradas: " + n);
