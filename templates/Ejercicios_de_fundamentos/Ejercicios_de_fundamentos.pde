@@ -19,11 +19,27 @@ void main() {
   
   // 1- Declara 3 variables, 'a', 'b' y 'c'. Asigna a 'a' cualquier valor par mayor que 10, asigna a 'b' el valor '12' y haz que 'c' valga el producto de 'a' y 'b'. Por último, muestra el valor de las tres variables por consola.
   
+  double a = 16;
+  double b = 12;
+  double c = a * b;
+  println("A es igual a " + a + ", B es igual a " + b + " y C es igual a " + c);
+  
   // 2- Reusando las dos primeras variables del ejercicio anterior, asígnales dos valores aleatorios (usando Math.random()), y haz que otra variable 'comp' sea el resultado de comparar si 'a' es mayor que 'b'. Por último, muestra el valor de las tres variables por consola.
   
-  // 3- Declara una variable 'd', asígnale un valor de tipo String (cadena de texto) con cualquier palabra a tu elección. Usando el campo '.length' que tienen los Strings (al igual que los arrays) muestra por consola cuántas letras tiene la palabra que has elegido.
+  a = Math.random();
+  b = Math.random();
+  boolean comp = a > b;
+  println("A es igual a " + a + ", B es igual a " + b + " y Comp es igual a " + comp);
+  
+  // 3- Declara una variable 'd', asígnale un valor de tipo String (cadena de texto) con cualquier palabra a tu elección. Usando la función '.length()' que tienen los Strings (al igual que los arrays) muestra por consola cuántas letras tiene la palabra que has elegido.
+  
+  String d = "Fórmula";
+  println("La palabra " + d + " tiene " + d.length() + " letras.");
   
   // 4- Declara una variable 'e', asígnale un valor de tipo string (cadena de texto) distinto del asignado a 'd' en el ejercicio anterior. Por último, muestra por consola el resultado de concatenar 'd' y 'e' con un ';' entre ellos.
+  
+  String e = "Esternocleidomastoideo";
+  println(d + ";" + e);
   
   
   
@@ -32,7 +48,21 @@ void main() {
   
   // 5- Define dos variables, asígna a cada una un valor numérico a tu elección y escribe una estructura condicional que muestre por consola el mayor de ellos.
   
+  int tres = 3;
+  int dos = 2;
+  
+  if (tres > 2) {
+    println(tres);
+  }
+  else {
+    println(dos);
+  }
+  
   // 6- Usando las dos variables anteriores, escribe una estructura condicional que muestre por consola ambos valores ÚNICAMENTE si la primera es mayor o igual que la segunda.
+  
+  if (tres > dos) {
+    println("La primera variable vale " + tres + " y la segunda vale " + dos);
+  }
   
   // 7- Usando dos variables de tipo String (cadena de texto), con valores a tu elección, escribe una estructura condicional que muestre por consola el valor de la que sea más larga, y en el caso de que sean igual de largas, que muestre el texto "Ambas variables tienen la misma longitud".
   
@@ -48,9 +78,9 @@ void main() {
   
   // 10- Escribe un bucle indexado que imprima por consola los números enteros entre 10 y 0 (ambos inclusive).
   
-  // 11- Escribe un bucle indexado que imprima por consola los múltiplos de 3 entre 1 y 30 (ambos inclusive). No debes comprobar si son múltiplos o no, simplemente utiliza el índice de tu bucle, incrementándolo en 3 unidades tras cada iteración.
+  // 11- Escribe un bucle indexado que imprima por consola los múltiplos de 3 entre 3 y 30 (ambos inclusive). No debes comprobar si son múltiplos o no, simplemente utiliza el índice de tu bucle, incrementándolo en 3 unidades tras cada iteración.
   
-  // 12- Escribe una función, con el nombre que elijas, que reciba un argumento de tipo String y que muestre cada una de sus letras en líneas separadas. A continuación invócala varias veces con diferentes palabras para comprobar que funciona correctamente.
+  // 12- Escribe una función, con el nombre que elijas, que reciba un argumento de tipo String y que muestre cada una de sus letras en líneas separadas. A continuación invócala varias veces con diferentes palabras para comprobar que funciona correctamente. Utiliza la función charAt(index) de los Strings para acceder a cada letra.
   
   
   
@@ -72,5 +102,5 @@ void main() {
   
   // 17- Declara una función que se llame 'esMultiplo', que reciba dos parámetros de entrada y que devuelva 'true' si el primer parámetro es divisible entre el segundo y 'false' en caso contrario. A continuación, invoca tú función varias veces usando diferentes valores y muestra los resultados por consola para comprobar que funciona correctamente.
   
-  // 18- Escribe una función que realice la misma tarea que el ejercicio 15, pero que nos permita decidir el límite. A continuación, invoca tu función varias veces con límites 0.25, 0,7 y 0,9 e imprime por consola los valores que devuelve la función en cada caso.  
+  // 18- Escribe una función que realice la misma tarea que el ejercicio 13, pero que nos permita decidir el límite. A continuación, invoca tu función varias veces con límites 0.25, 0,7 y 0,9 e imprime por consola los valores que devuelve la función en cada caso.  
 }
