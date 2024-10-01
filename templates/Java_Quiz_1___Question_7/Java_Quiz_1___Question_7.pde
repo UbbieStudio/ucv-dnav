@@ -72,6 +72,6 @@ int myFunction(int a, int b) {
 
 void printResult(boolean solved) {
   if (solved) {
-    println("Nuestra función devuelve ");
+    println("Nuestra función devuelve 1 si el primer número es mayor que el segundo, -1 si es al contrario, y 0 si son iguales. En nuestro caso, como 3 es menor que 7, devolverá -1");
   }
 }
