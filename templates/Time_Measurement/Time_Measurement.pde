@@ -36,6 +36,10 @@ void main() {
                       
   /* Escribe tu propio código que ordene el array de estudiantes de manera aleatoria. Finalmente, comprueba que todos los estudiantes están en el nuevo array y que ningún nombre se repite */
   
+  /* Escribe una función que recoja el resultado de timeElapsed y lo imprima "bonito", y muestre el tiempo transcurrido en segundos en lugar de milisegundos */
+  
+  /* Viendo lo que tarda de media tu código ¿se te ocurre alguna forma de optimizarlo para que sea más rápido? */
+  
   long finish = System.currentTimeMillis();
   long timeElapsed = finish - start;
   println(timeElapsed);
