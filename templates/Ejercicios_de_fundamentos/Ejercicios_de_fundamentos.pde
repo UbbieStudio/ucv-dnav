@@ -151,11 +151,80 @@ void main() {
   
   // 14- Declara una función, con un nombre a tu elección, que reciba un parámetro de entrada y que lo imprima por consola. A continuación invoca tu función con el valor que tú quieras para comprobar que funciona.
   
+  function1("Hola muchachos");
+  
   // 15- Declara una función, con un nombre a tu elección, que reciba dos parámetros de entrada, y que devuelva 1 si el primer parámetro es mayor que el segundo, 0 si son iguales, y -1 si el segundo es mayor que el primero. A continuación, invócala usando diferentes valores y muestra los resultados por consola para comprobar que funciona correctamente (la función en sí NO TIENE QUE MOSTRAR NADA POR CONSOLA).
+  
+  println(funcionB(3, 7));
   
   // 16- Declara una función que se llame 'esPar', que reciba un parámetro de entrada y que devuelva 'true' si el parámetro es un número par y 'false' en caso contrario. A continuación, invoca tú función varias veces usando diferentes valores y muestra los resultados por consola para comprobar que funciona correctamente.
   
+  println(esPar(1));
+  println(esPar(10));
+  
   // 17- Declara una función que se llame 'esMultiplo', que reciba dos parámetros de entrada y que devuelva 'true' si el primer parámetro es divisible entre el segundo y 'false' en caso contrario. A continuación, invoca tú función varias veces usando diferentes valores y muestra los resultados por consola para comprobar que funciona correctamente.
   
+  println(esMultiplo(5, 10));
+  println(esMultiplo(12, 19));
+  
   // 18- Escribe una función que realice la misma tarea que el ejercicio 13, pero que nos permita decidir el límite. A continuación, invoca tu función varias veces con límites 0.25, 0,7 y 0,9 e imprime por consola los valores que devuelve la función en cada caso.  
+  
+  float susana = 0.7;
+  double angelo = Math.random();
+  println(pablo(susana, angelo));
+
+}
+
+// 14
+void function1(String ab) {
+  println(ab);
+}
+
+// 15
+int funcionB(int v, int w) {
+  if (v > w) {
+    return (1);
+  }
+  else if(v == w) {
+    return (0);
+  }
+  else {
+    return (-1);
+  }
+}
+
+// 16
+boolean esPar(int i) {
+  if(i % 2 == 0) {
+    return true;
+  }
+  else {
+    return false;
+  }
+}
+
+boolean esPar2(int i) {
+  return i % 2 == 0;
+}
+
+// 17
+boolean esMultiplo(int z, int b) {
+  if (z % b == 0) {
+    return (true);
+  }
+  else {
+    return (false);
+  }
+}
+
+boolean esMultiplo2(int z, int b) {
+  return (z % b == 0);
+}
+
+// 18
+double pablo(float susana, double angelo) {
+  while(angelo < susana) {
+    angelo = Math.random();
+  }
+  return angelo;
 }
