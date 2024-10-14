@@ -1,6 +1,4 @@
 import java.util.*;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 void setup() {
   size(400, 400);
@@ -12,6 +10,12 @@ void draw() {
   return;
 }
 
+/*
+################################################
+#                PRÁCTICA 1                    #
+################################################
+*/
+
 void main() {
   /*
     0 (0 puntos)- Introduce tu nombre y apellidos en el siguiente vector (array) en lugar de los valores por defecto.
@@ -21,12 +25,9 @@ void main() {
 
 
   /*
-    1 (0.5 puntos)- Consulta la documentación de la clases Date de Java (https://www.w3schools.com/java/java_date.asp) y conociendo las diferentes clases y métodos (funciones)
+    1 (0.5 puntos)- Consulta la documentación de las clases Date de Java (https://www.w3schools.com/java/java_date.asp) y conociendo las diferentes clases y métodos (funciones)
    que nos ofrece, crea una variable llamada 'now' con la FECHA Y HORA local y muéstrala por consola (No olvides importar la clase al inicio de este documento).
    */
-
-  LocalDateTime now = LocalDateTime.now();
-  println(now);
 
 
 
@@ -37,10 +38,6 @@ void main() {
    y muéstrala por consola.
    */
 
-  DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss - dd/MM/yyyy");
-  String formattedDateTime = formatter.format(now);
-  println(formattedDateTime);
-
 
 
   /*
@@ -50,16 +47,16 @@ void main() {
    Integer.parseInt(myString).
    */
 
-  String[] dateTimeParts = formattedDateTime.split(" - ");
-  String[] timeParts = dateTimeParts[0].split(":");
-  String[] dateParts = dateTimeParts[1].split("/");
+  String[] dateTimeParts;
+  String[] timeParts;
+  String[] dateParts;
 
-  int hour = Integer.parseInt(timeParts[0]);
-  int minute = Integer.parseInt(timeParts[1]);
-  int second = Integer.parseInt(timeParts[2]);
-  int day = Integer.parseInt(dateParts[0]);
-  int month = Integer.parseInt(dateParts[1]);
-  int year = Integer.parseInt(dateParts[2]);
+  int hour = 0;
+  int minute = 0;
+  int second = 0;
+  int day = 0;
+  int month = 0;
+  int year = 0;
 
 
 
@@ -67,9 +64,8 @@ void main() {
     4 (0.5 puntos)- Utilizando el método (función) 'join()' de Java (https://www.w3schools.com/java/ref_string_join.asp), concatena los tres valores de nuestra
    variable 'nameparts' en una sola variable de texto llamada 'fullname', separados por espacios y muéstrala por consola.
    */
-
-  String fullname = String.join(" ", nameparts);
-  println(fullname);
+   
+   String fullname = null;
 
 
 
@@ -78,10 +74,6 @@ void main() {
    'randomInt()' que devuelva un número entero aleatorio entre 0 y el límite que le pasemos como argumento de entrada - 1. Recuerda que las funciones/métodos
    han de definirse FUERA DEL MAIN. Invoca tu función tres veces y muestra el resultado por consola para comprobar que funciona.
    */
-
-  println(randomInt(5));
-  println(randomInt(5));
-  println(randomInt(5));
 
 
 
@@ -128,28 +120,16 @@ void main() {
     "VIVES GIMENO, BELÉN"));
 
   ArrayList<Integer> indices = new ArrayList<Integer>();
-  int rnd;
-  while (indices.size() < students.size()) {
-    rnd = randomInt(students.size());
-    if (!indices.contains(rnd)) {
-      indices.add(rnd);
-    }
-  }
-  println(indices);
   
   
   
   /*
-    7 (1 punto)- Una vez tengamos todos los índices, hemos de declarar otro ArrayList llamado 'shuffledList' y rellenarlo con los nombres de los estudiantes ordenados de forma
+    7 (1 punto)- Una vez tengamos todos los índices, hemos de declarar otro ArrayList llamado 'shuffledStudents' y rellenarlo con los nombres de los estudiantes ordenados de forma
    aleatoria (siguiendo los índices que hemos generado). Posteriormente, podemos crear un bucle que recorra nuestra nueva lista y muestre los nombres uno a uno 
    para comprobar que todo funciona correctamente y que, efectivamente, nuestra nueva lista contiene todos los estudiantes en orden aleatorio.
   */
-
+  
   ArrayList<String> shuffledStudents = new ArrayList<String>();
-  for (int i = 0; i < indices.size(); i++) {
-    shuffledStudents.add(students.get(indices.get(i)));
-    println(shuffledStudents.get(shuffledStudents.size() - 1));
-  }
   
   
   
@@ -159,9 +139,7 @@ void main() {
     de que está entre los cinco primeros de la lista.
   */
   
-  rnd = randomInt(5);
-  String upperStudent = shuffledStudents.get(rnd);
-  println(upperStudent);
+  String upperStudent = null;
   
   
   
@@ -169,23 +147,23 @@ void main() {
     9 (0.5 puntos)- Haz lo mismo que en el ejercicio anterior, pero esta vez el estudiante debe encontrarse en los 5 últimos puestos de la lista. Guarda el nombre del estudiante
     en una variable de texto llamada 'bottomStudent'. Muéstrala también por consola para cerciorarte de que se encuentra en los 5 últimos puestos de la lista.
   */
-  rnd = randomInt(5);
-  String bottomStudent = shuffledStudents.get(shuffledStudents.size() - 1 - rnd);
-  println(bottomStudent);
+  
+  String bottomStudent = null;
   
   
   
   /*
-    10 (0 puntos)- Llegados a este punto, cambia el valor de la variable 'finished' para limpiar la consola y que se muestren los resultados de tu práctica. Aprovecha para
-    revisar que todo está bien antes de entregarla. Si hay algún error, este es el momento de volver atrás y corregirlo ¡Prohibido alterar el código dentro del if!
+    10 (0 puntos)- Llegados a este punto, cambia el valor de la variable 'finished' para limpiar la consola y que se muestren los resultados de tu práctica. 
+    Descomenta también la línea dentro del primer bucle for. Aprovecha para revisar que todo está bien antes de entregarla. Si hay algún error, este es el 
+    momento de volver atrás y corregirlo ¡Prohibido alterar ninguna línea más del código dentro del if!
   */
   
-  boolean finished = true;
+  boolean finished = false;
   
   if(finished) {
     ArrayList<Integer> rndNumbers = new ArrayList<Integer>();
     for(int i = 0; i < 10; i++) {
-      rndNumbers.add(randomInt(10) + 1);
+      //rndNumbers.add(randomInt(10) + 1);
     }
     println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
     println("#########################################");
@@ -201,10 +179,5 @@ void main() {
     }
     println("\nUpper student: " + upperStudent);
     println("Bottom student: " + bottomStudent);
-  }
-  
-}
-
-int randomInt(int limit) {
-  return (int)(Math.random() * limit);
+  }  
 }
