@@ -21,6 +21,13 @@ void main() {
     0 (0 puntos)- Introduce tu nombre y apellidos en el siguiente vector (array) en lugar de los valores por defecto.
    */
   String[] nameparts = {"Nombre", "Primer apellido", "Segundo apellido"};
+  
+  
+  
+  String s = "Hola qué tal";
+  String[]
+  
+  println(s.split(" "));
 
 
 
@@ -81,7 +88,7 @@ void main() {
     6 (3 puntos)- Como ya sabemos, los vectores o arrays primitivos de Java tienen una serie de limitaciones, como que no pueden ser redimensionados, 
     para buscar elementos dentro de ellos tenemos que recorrerlos con un bucle, etc. Para paliar todos estos problemas, Java nos ofrece una clase llamada 
     ArrayList, que nos permite trabajar con listas de elementos de una manera más cómoda y sencilla, con multitud de métodos/funciones que nos agilizan 
-    el trabajo. Podemos consultar la documentación aquí: https://www.w3schools.com/java/java_arraylist.asp.
+    el trabajo. Podemos consultar la documentación aquí: https://www.w3schools.com/java/java_arraylist.asp .
    
     A continuación tenemos declarado un ArrayList de variables tipo String, llamado 'students' que almacena los nombres de todos los estudiantes de la clase 
     ordenados alfabéticamente.
