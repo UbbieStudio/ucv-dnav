@@ -25,9 +25,7 @@ void main() {
   
   
   String s = "Hola qué tal";
-  String[]
   
-  println(s.split(" "));
 
 
 
@@ -72,7 +70,8 @@ void main() {
    variable 'nameparts' en una sola variable de texto llamada 'fullname', separados por espacios y muéstrala por consola.
    */
    
-   String fullname = null;
+   String fullname = String.join(" ", nameparts);
+   println(fullname);
 
 
 
@@ -126,7 +125,17 @@ void main() {
     "VANEGAS RODRÍGUEZ, JUAN PABLO",
     "VIVES GIMENO, BELÉN"));
 
-  ArrayList<Integer> indices = new ArrayList<Integer>();
+  ArrayList<Integer> indices = new ArrayList<Integer>(); 
+  
+  while(indices.size() < students.size()) {
+    int randomIndex = randomInt(students.size() - 1);
+    if(!indices.contains(randomIndex)) {
+      indices.add(randomIndex);
+    }
+  }
+  
+  println(indices);
+  println(indices.size());
   
   
   
@@ -137,6 +146,12 @@ void main() {
   */
   
   ArrayList<String> shuffledStudents = new ArrayList<String>();
+  
+  for(int i = 0; i < indices.size(); i++) {
+    shuffledStudents.add(students.get(indices.get(i)));
+  }
+  
+  println(shuffledStudents);
   
   
   
@@ -187,4 +202,9 @@ void main() {
     println("\nUpper student: " + upperStudent);
     println("Bottom student: " + bottomStudent);
   }  
+}
+
+
+int randomInt(int limit) {
+  return (int)(Math.random() * (limit + 1));
 }
