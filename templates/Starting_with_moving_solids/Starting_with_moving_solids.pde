@@ -6,11 +6,7 @@ ArrayList<Solid> mySolids = new ArrayList<Solid>();
 
 void setup() {
   size(800, 800);
-  //mySolids.add(new Solid());
-  //mySolids.add(new Solid(128, 14, 99));
-  //mySolids.add(new Solid(195, 114, 99));
-  
-  for(int i = 0; i < 30; i++) {
+  for(int i = 0; i < 10; i++) {
     mySolids.add(new Solid());
   }
 }
@@ -22,4 +18,8 @@ void draw() {
     s.update();
     s.display();
   }
+}
+
+void mousePressed() {
+  println(mouseX + ", " + mouseY);
 }
