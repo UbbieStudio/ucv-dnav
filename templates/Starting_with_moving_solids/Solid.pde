@@ -15,18 +15,13 @@ class Solid {
     location = new PVector(randLocation[0], randLocation[1]);
     speed = PVector.sub(direction, location);
     topSpeed = 7;
-    r = 255;
-    g = 174;
-    b = 94;
+    r = (int) random(0, 255);
+    g = (int) random(0, 255);
+    b = (int) random(0, 255);
   }
   
   Solid(int red, int green, int blue) {
-    int[] randDirection = getRandomCoords();
-    int[] randLocation = getRandomCoords();
-    PVector direction = new PVector(randDirection[0], randDirection[1]);
-    location = new PVector(randLocation[0], randLocation[1]);
-    speed = PVector.sub(direction, location);
-    topSpeed = 7;
+    this();
     r = red;
     g = green;
     b = blue;
@@ -42,10 +37,7 @@ class Solid {
       speed.y = speed.y * -1;
     }
     
-    // Limit the velocity by topspeed
     speed.limit(topSpeed);
-    
-    // Location changes by velocity
     location.add(speed);
   }
 
@@ -60,6 +52,5 @@ class Solid {
     int[] coords = {(int) random(0, width), (int) random(0, height)};
     return coords;
   }
-  
   
 }
