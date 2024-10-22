@@ -1,16 +1,21 @@
+import java.util.ArrayList;
 
-Solid mySolid, mySolid2;
+Solid mySolid, mySolid2, mySolid3;
+
+ArrayList<Solid> mySolids = new ArrayList<Solid>();
 
 void setup() {
   size(800, 800);
-  mySolid = new Solid();
-  mySolid2 = new Solid();
+  mySolids.add(new Solid());
+  mySolids.add(new Solid(128, 14, 99));
+  mySolids.add(new Solid(195, 114, 99));
 }
 
 void draw() {
   background(0);
-  mySolid.update();
-  mySolid.display();
-  mySolid2.update();
-  mySolid2.display();
+  
+  for(Solid s : mySolids) {
+    s.update();
+    s.display();
+  }
 }
