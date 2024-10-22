@@ -12,19 +12,25 @@ class Solid {
   int g;
   int b;
   
+  // Hit
+  boolean hit;
+  
   
   
   Solid() {
+    topSpeed = (int) random(3, 9);
+    size = (int) random(16, 32);
     int[] randDirection = getRandomCoords();
     int[] randLocation = getRandomCoords();
     PVector direction = new PVector(randDirection[0], randDirection[1]);
     location = new PVector(randLocation[0], randLocation[1]);
     speed = PVector.sub(direction, location);
-    topSpeed = 3;
-    size = 24;
+    
     r = (int) random(0, 255);
     g = (int) random(0, 255);
     b = (int) random(0, 255);
+    
+    hit = false;
   }
   
   Solid(int s) {
@@ -41,11 +47,15 @@ class Solid {
     
   void update() {
     
-    if(location.x > width || location.x < 0) {
+    if(hit) {
+      return;
+    }
+    
+    if(location.x > (width - size/2) || location.x < size/2) {
       speed.x = speed.x * -1;
     }
     
-    if(location.y > height || location.y < 0) {
+    if(location.y > (height - size/2) || location.y < size/2) {
       speed.y = speed.y * -1;
     }
     
@@ -54,15 +64,30 @@ class Solid {
   }
 
   void display() {
-    stroke(255);
-    strokeWeight(1);
-    fill(r, g, b);
+    if(hit) {
+      stroke(1);
+      strokeWeight(0);
+      fill(1);
+    }
+    else {
+      stroke(255);
+      strokeWeight(1);
+      fill(r, g, b);
+    }
+    
     ellipse(location.x, location.y, size, size);
   }
   
   int[] getRandomCoords() {
-    int[] coords = {(int) random(0, width), (int) random(0, height)};
+    int[] coords = {(int) random(2 * size, width - 2 * size), (int) random(2 * size, height - 2 * size)};
     return coords;
   }
   
+  void hasBeenHit(int x, int y) {
+    if(Math.abs(x - location.x) < size / 2 && Math.abs(y - location.y) < size / 2) {
+      println("Hit at " + x + ", " + y + "!");
+      hit = true;
+      location = new PVector(-99999, -99999);
+    }
+  }
 }
