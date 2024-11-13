@@ -165,8 +165,14 @@ class Solid {
    
     sec = sec % 60;
     min = min % 60;
-   
-    return(ho + " hours : " + min + " minutes : " + sec + " seconds.");
+    if(ho > 0){
+    return(ho + " hours : " + min + " minutes : " + milis / 1000.0 + " seconds.");
+    }
+    if(min > 0){
+      return(min + " minutes : " + milis / 1000.0 + " seconds.");
+    }else{
+      return(milis / 1000.0 + " seconds.");
+    }
   }
   
 
