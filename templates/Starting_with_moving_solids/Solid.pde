@@ -1,4 +1,7 @@
 class Solid {
+  
+  /* CAMPOS DE LA CLASE SOLID */
+  
   // Magnitudes
   PVector location;
   PVector speed;
@@ -14,15 +17,22 @@ class Solid {
   
   // Hit
   boolean hit;
+  long hitTime;
+  
+  /********************************/
   
   
+  /* CONSTRUCTORES */
   
   Solid() {
-    topSpeed = (int) random(3, 9);
-    size = (int) random(16, 32);
+    
+    topSpeed = (int) random(3, 6);
+    size = (int) random(24, 32);
+    
     int[] randDirection = getRandomCoords();
     int[] randLocation = getRandomCoords();
     PVector direction = new PVector(randDirection[0], randDirection[1]);
+    
     location = new PVector(randLocation[0], randLocation[1]);
     speed = PVector.sub(direction, location);
     
@@ -31,6 +41,7 @@ class Solid {
     b = (int) random(0, 255);
     
     hit = false;
+    hitTime = 0;
   }
   
   Solid(int s) {
@@ -44,6 +55,14 @@ class Solid {
     g = green;
     b = blue;
   }
+  
+  /******************************/
+  
+  
+  
+  
+  
+  
     
   void update() {
     
@@ -62,6 +81,14 @@ class Solid {
     speed.limit(topSpeed);
     location.add(speed);
   }
+  
+  
+  
+  
+  
+  
+  
+  
 
   void display() {
     if(hit) {
@@ -78,16 +105,69 @@ class Solid {
     ellipse(location.x, location.y, size, size);
   }
   
+  
+  
+  
+  
+  
+  
   int[] getRandomCoords() {
     int[] coords = {(int) random(2 * size, width - 2 * size), (int) random(2 * size, height - 2 * size)};
     return coords;
   }
   
-  void hasBeenHit(int x, int y) {
+  
+  
+  
+  
+  
+  
+  void hasBeenHit(int x, int y, long start) {
     if(Math.abs(x - location.x) < size / 2 && Math.abs(y - location.y) < size / 2) {
-      println("Hit at " + x + ", " + y + "!");
+      
       hit = true;
-      location = new PVector(-99999, -99999);
+      hitTime = System.currentTimeMillis() - start;
+      location = new PVector(-99, -99);
+      
+      println("Hit at " + x + ", " + y + " coordinates and after " + nicolasTime(hitTime));
     }
   }
+  
+  // Diana 
+  String dianaTime(long millis){
+    return (((millis - startTime)/100000) + " hours, " + ((millis - startTime)/10000) + " minutes, and " + (millis - startTime)/1000 + " seconds");
+  }
+  
+  // Jari
+  String jariTime(long time) {
+    long totalSeconds = time/1000;
+    int sec = 0;
+    int min = 0;
+    int hour = 0;
+   
+    while (totalSeconds > 60) {
+      totalSeconds -= 60;
+      min ++;
+      while (min > 60) {
+        min -= 60;
+        hour ++;
+      }
+    }
+    sec = (int) totalSeconds;
+    return ("Tiempo: " + hour + " horas " + min + " minutos " + sec + " segundos ");
+  }
+  
+  // Nicolás
+  String nicolasTime(long milis) {
+    long sec = milis / 1000;
+    long min = sec / 60;
+    long ho = min / 60;
+   
+    sec = sec % 60;
+    min = min % 60;
+   
+    return(ho + " hours : " + min + " minutes : " + sec + " seconds.");
+  }
+  
+
 }
