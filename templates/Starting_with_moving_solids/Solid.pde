@@ -49,6 +49,15 @@ class Solid {
     size = s;
   }
   
+  Solid(int x, int y) {
+    this();
+    location = new PVector(x, y);
+    size = 10;
+    r = 255;
+    g = 255;
+    b = 255;
+  }
+  
   Solid(int red, int green, int blue) {
     this();
     r = red;
@@ -70,11 +79,11 @@ class Solid {
       return;
     }
     
-    if(location.x > (width - size/2) || location.x < size/2) {
+    if(location.x + speed.x > (width - size/2) || location.x + speed.x < size/2) {
       speed.x = speed.x * -1;
     }
     
-    if(location.y > (height - size/2) || location.y < size/2) {
+    if(location.y + speed.y > (height - size/2) || location.y + speed.y < size/2) {
       speed.y = speed.y * -1;
     }
     
@@ -124,13 +133,57 @@ class Solid {
   
   void hasBeenHit(int x, int y, long start) {
     if(Math.abs(x - location.x) < size / 2 && Math.abs(y - location.y) < size / 2) {
-      
       hit = true;
       hitTime = System.currentTimeMillis() - start;
       location = new PVector(-99, -99);
       
-      println("Hit at " + x + ", " + y + " coordinates and after " + nicolasTime(hitTime));
+      println("Hit at " + x + ", " + y + " and after " + prettyTime(hitTime));
     }
+  }
+  
+  
+  void hasCrashed(Solid s) {
+    if((this.location.sub(s.location)).mag() <= (size / 2) + (s.size / 2)) {
+      println("Crashed!!!!");
+    }
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  String prettyTime(long t) {
+    ArrayList<String> output = new ArrayList();
+    long ms = t % 1000;
+    long s = t / 1000 % 60;
+    long m = t / 1000 / 60 % 60;
+    long h = t / 1000 / 60 / 60 % 24;
+    
+    if(h > 0) {
+      output.add(Long.toString(h) + "h");
+    }
+    if(m > 0) {
+      output.add(Long.toString(m) + "m");
+    }
+    if(s > 0) {
+      output.add(Long.toString(s) + "s");
+    }
+    if(ms > 0) {
+      output.add(Long.toString(ms) + "ms");
+    }
+    
+    return String.join(" ", output);
   }
   
   // Diana 
