@@ -7,8 +7,11 @@ class Solid {
   PVector speed;
   float topSpeed;
   
-  // Size
+  // Size and mass
   int size;
+  int maxSize = 32;
+  int minSize = 16;
+  double mass;
   
   // Color
   int r;
@@ -27,7 +30,8 @@ class Solid {
   Solid() {
     
     topSpeed = (int) random(3, 6);
-    size = (int) random(24, 32);
+    size = (int) random(minSize, maxSize);
+    mass = size / maxSize;
     
     int[] randDirection = getRandomCoords();
     int[] randLocation = getRandomCoords();
@@ -140,6 +144,17 @@ class Solid {
       println("Hit at " + x + ", " + y + " and after " + prettyTime(hitTime));
     }
   }
+  
+  
+  // m1 * v1 + m2 * v2 = m1 * v'1 + m2 * v'2
+  
+  // m1 * v1x + m2 * v2x = m1 * v'1x + m2 * v'2x
+  // m1 * v1y + m2 * v2y = m1 * v'1y + m2 * v'2y
+  
+  // m1 * v1x + m2 * v2x = m1 * |v1| * cos(theta1) + m2 * |v2| * cos(theta2)
+  // m1 * v1y + m2 * v2y = m1 * |v1| * sin(theta1) + m2 * |v2| * sin(theta2)
+  //________________________________________________________________________
+  // 
   
   
   void hasCrashed(Solid s) {
