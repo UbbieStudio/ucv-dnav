@@ -127,6 +127,11 @@ class Solid {
   
   
   
+  
+  
+  
+  
+  
   void hasBeenHit(int x, int y, long start) {
     if(Math.abs(x - location.x) < size / 2 && Math.abs(y - location.y) < size / 2) {
       hit = true;
@@ -139,6 +144,17 @@ class Solid {
   
   
 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
   
   void hasCrashed(Solid s) {
@@ -156,6 +172,27 @@ class Solid {
       //s.location.add(s.speed);
     }
   }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
   void overlaps(Solid s) {
     PVector distance = PVector.sub(location, s.location);
