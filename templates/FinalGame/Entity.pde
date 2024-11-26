@@ -1,15 +1,9 @@
 class Entity {
   
   boolean alive;
-  
-  PVector loc;
-  PVector speed;
-  
-  float radius;
-  
+  PVector loc, speed;
+  float radius, energy;
   color innerColor;
-  
-  float energy;
   
   Entity() {
     alive = true;
