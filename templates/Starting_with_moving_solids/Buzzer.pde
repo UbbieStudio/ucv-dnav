@@ -1,7 +1,7 @@
 class Buzzer extends Solid {
   
   Buzzer() {
-    super();
+    super(1);
     r = 255;
     g = 0;
     b = 0;

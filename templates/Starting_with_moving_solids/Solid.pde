@@ -2,6 +2,8 @@ class Solid {
   
   /* CAMPOS DE LA CLASE SOLID */
   
+  String name;
+  
   // Magnitudes
   PVector location;
   PVector speed;
@@ -24,7 +26,8 @@ class Solid {
   
   /* CONSTRUCTORES */
   
-  Solid() {
+  Solid(int i) {
+    name = "Solid " + Integer.toString(i);
     topSpeed = (int) random(3, 6);
     size = (int) random(16, 32);
     
@@ -44,7 +47,7 @@ class Solid {
   }
   
   Solid(int x, int y) {
-    this();
+    this(1);
     location = new PVector(x, y);
     size = 10;
     r = 255;
@@ -53,7 +56,7 @@ class Solid {
   }
   
   Solid(int red, int green, int blue) {
-    this();
+    this(1);
     r = red;
     g = green;
     b = blue;
@@ -138,11 +141,16 @@ class Solid {
       hitTime = System.currentTimeMillis() - start;
       location = new PVector(-99, -99);
       
-      println(this + " hit at " + x + ", " + y + " and after " + prettyTime(hitTime));
+      println(this + " hit at " + x + ", " + y + " and after " + showConvertedTime(hitTime));
     }
   }
   
   
+
+
+
+
+
 
   
   
@@ -161,6 +169,7 @@ class Solid {
     PVector distance = PVector.sub(location, s.location);
     
     if(distance.mag() <= size / 2.0 + s.size / 2.0) {
+      //println(name + " crashed " + s.name);
       PVector newSpeed1 = PVector.fromAngle(s.speed.heading()).setMag(s.speed.mag());
       PVector newSpeed2 = PVector.fromAngle(speed.heading()).setMag(speed.mag());
 
@@ -171,6 +180,7 @@ class Solid {
       s.update();
       //s.location.add(s.speed);
     }
+    
   }
   
   
@@ -245,41 +255,56 @@ class Solid {
   }
   
   // Jari
-  String jariTime(long time) {
-    long totalSeconds = time/1000;
+  String showConvertedTime(long time) {
+    long totalMilis = time;
+    int milis = 0;
     int sec = 0;
     int min = 0;
     int hour = 0;
-   
-    while (totalSeconds > 60) {
-      totalSeconds -= 60;
-      min ++;
-      while (min > 60) {
-        min -= 60;
-        hour ++;
+
+    while (totalMilis > 1000) {
+      totalMilis -= 1000;
+      sec++;
+      while (sec > 60) {
+        sec -= 60;
+        min ++;
+        while (min > 60) {
+          min -= 60;
+          hour ++;
+        }
       }
     }
-    sec = (int) totalSeconds;
-    return ("Tiempo: " + hour + " horas " + min + " minutos " + sec + " segundos ");
+    milis = (int) totalMilis;
+    if (hour == 0 && min == 0) {
+      //println("  :  " + sec + " segundos " + milis + " milisegundos");
+      return(sec + " segundos " + milis + " milisegundos");
+    } else if (hour == 0) {
+      //println("  :  " + min + " minutos " + sec + " segundos " + milis + " milisegundos");
+      return(min + " minutos " + sec + " segundos " + milis + " milisegundos");
+    } else {
+      //println("  :  " + hour + " horas " + min + " minutos " + sec + " segundos " + milis + " milisegundos");
+      return(hour + " horas " + min + " minutos " + sec + " segundos " + milis + " milisegundos");
+    }
   }
   
   // Nicolás
-  String nicolasTime(long milis) {
-    long sec = milis / 1000;
-    long min = sec / 60;
-    long ho = min / 60;
-   
-    sec = sec % 60;
-    min = min % 60;
-    if(ho > 0){
-    return(ho + " hours : " + min + " minutes : " + milis / 1000.0 + " seconds.");
-    }
-    if(min > 0){
-      return(min + " minutes : " + milis / 1000.0 + " seconds.");
-    }else{
-      return(milis / 1000.0 + " seconds.");
-    }
+  String convertTime(long milis) {
+  long sec = milis / 1000;
+  long min = sec / 60;
+  long ho = min / 60;
+
+  sec = sec % 60;
+  min = min % 60;
+  
+  if(ho > 0){
+  return(ho + " hours : " + min + " minutes : " + milis + " seconds.");
   }
+  if(min > 0){
+    return(min + " minutes : " + sec + " seconds.");
+  }else{
+    return(milis / 1000.0 + " seconds.");
+  }
+}
   
 
 }
