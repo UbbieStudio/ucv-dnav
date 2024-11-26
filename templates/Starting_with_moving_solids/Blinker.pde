@@ -7,12 +7,15 @@ class Blinker extends Solid {
     b = 255;
   }
   
+  String toString() {
+    return "Blinker";
+  }
+  
   void update() {
-    if(hit) {
-      return;
-    }
-    
     if(Math.random() < 0.01) {
+      if(hit) {
+        return;
+      }
       int dist = (int)(Math.random() * (size * 3 - size + 1)) + size;
       PVector displacement = speed;
       displacement.setMag(dist);

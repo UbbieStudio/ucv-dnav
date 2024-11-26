@@ -1,12 +1,15 @@
 class Waver extends Solid {
-  int minSize, maxSize, rate;
+  
+  int minSize, maxSize;
+  double realSize, rate;
   boolean increasing;
   
   Waver(int min, int max) {
     super();
     minSize = min;
     maxSize = max;
-    rate = (int) Math.floor(Math.random() * 3 + 1);
+    realSize = size;
+    rate = Math.random() * 2;
     r = 0;
     g = 255;
     b = 0;
@@ -17,11 +20,16 @@ class Waver extends Solid {
     super();
     minSize = min;
     maxSize = max;
+    realSize = size;
     rate = changeRate;
     r = 0;
     g = 255;
     b = 0;
     increasing = Math.random() * 1000 % 2 == 0;
+  }
+  
+  String toString() {
+    return "Waver";
   }
   
   void update() {
@@ -34,17 +42,9 @@ class Waver extends Solid {
       increasing = !increasing;
     }
     
-    size = size + (increasing ? rate : -rate);
+    realSize = realSize + (increasing ? rate : -rate);
+    size = (int) realSize;
     
-    if(location.x + speed.x > (width - size/2) || location.x + speed.x < size/2) {
-      speed.x = speed.x * -1;
-    }
-    
-    if(location.y + speed.y > (height - size/2) || location.y + speed.y < size/2) {
-      speed.y = speed.y * -1;
-    }
-    
-    speed.limit(topSpeed);
-    location.add(speed);
+    super.update();
   }
 }

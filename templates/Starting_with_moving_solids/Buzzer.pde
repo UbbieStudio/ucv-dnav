@@ -1,9 +1,14 @@
 class Buzzer extends Solid {
+  
   Buzzer() {
     super();
     r = 255;
     g = 0;
     b = 0;
+  }
+  
+  String toString() {
+    return "Buzzer";
   }
   
   void update() {

@@ -1,6 +1,7 @@
-import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Random;
 
-int n = 2;
+int n = 3;
 ArrayList<Solid> mySolids = new ArrayList<Solid>();
 long startTime = System.currentTimeMillis();
 
@@ -12,18 +13,21 @@ void setup() {
   for(int i = 0; i < n; i++) {
     //mySolids.add(new Solid(193, 210, 225));
     mySolids.add(new Buzzer());
-    mySolids.add(new Waver(6, 32));
+    mySolids.add(new Waver(16, 32));
     mySolids.add(new Blinker());
   }
-  
-  println(radians(360));
-  println(degrees(3*PI/2));
+  for(int i = 0; i < mySolids.size(); i++) {
+    for(int j = i + 1; j < mySolids.size(); j++) {
+      mySolids.get(i).overlaps(mySolids.get(j));
+    }
+  }
 }
 
 
 void draw() {
   background(0);
   boolean anyActive = false;
+  shuffleArray(mySolids);
 
   for(Solid s : mySolids) {
     if(!s.hit) {
@@ -36,12 +40,9 @@ void draw() {
   for(int i = 0; i < mySolids.size(); i++) {
     for(int j = i + 1; j < mySolids.size(); j++) {
       mySolids.get(i).hasCrashed(mySolids.get(j));
+      mySolids.get(i).overlaps(mySolids.get(j));
     }
   }
-  
-  //String txt = "Dist: 10m";
-  fill(255, 255, 255);
-  //text(txt, 700, 40, 780, 100);
   
   if(!anyActive) {
     println("Finished game in " + prettyTime((System.currentTimeMillis() - startTime)));
@@ -77,6 +78,13 @@ String prettyTime(long t) {
   }
   
   return String.join(" ", output);
+}
+
+void shuffleArray(ArrayList al) {
+  Random r1 = new Random(); 
+  for (int i = al.size() - 1; i >= 1; i--) { 
+      Collections.swap(al, i, r1.nextInt(i + 1)); 
+  } 
 }
 
 /* RETO PARA LA PRÓXIMA SESIÓN: Hacer que cada bolita, al ser golpeada por primera vez, reduzca su tamaño a la mitad y 

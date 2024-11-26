@@ -9,9 +9,6 @@ class Solid {
   
   // Size and mass
   int size;
-  int maxSize = 32;
-  int minSize = 16;
-  double mass;
   
   // Color
   int r;
@@ -28,10 +25,8 @@ class Solid {
   /* CONSTRUCTORES */
   
   Solid() {
-    
     topSpeed = (int) random(3, 6);
-    size = (int) random(minSize, maxSize);
-    mass = size / maxSize;
+    size = (int) random(16, 32);
     
     int[] randDirection = getRandomCoords();
     int[] randLocation = getRandomCoords();
@@ -46,11 +41,6 @@ class Solid {
     
     hit = false;
     hitTime = 0;
-  }
-  
-  Solid(int s) {
-    this();
-    size = s;
   }
   
   Solid(int x, int y) {
@@ -73,7 +63,9 @@ class Solid {
   
   
   
-  
+  String toString() {
+    return "Solid";
+  }
   
   
     
@@ -141,34 +133,43 @@ class Solid {
       hitTime = System.currentTimeMillis() - start;
       location = new PVector(-99, -99);
       
-      println("Hit at " + x + ", " + y + " and after " + prettyTime(hitTime));
+      println(this + " hit at " + x + ", " + y + " and after " + prettyTime(hitTime));
     }
   }
   
   
-  // m1 * v1 + m2 * v2 = m1 * v'1 + m2 * v'2
-  
-  // m1 * v1x + m2 * v2x = m1 * v'1x + m2 * v'2x
-  // m1 * v1y + m2 * v2y = m1 * v'1y + m2 * v'2y
-  
-  // m1 * v1x + m2 * v2x = m1 * |v1| * cos(theta1) + m2 * |v2| * cos(theta2)
-  // m1 * v1y + m2 * v2y = m1 * |v1| * sin(theta1) + m2 * |v2| * sin(theta2)
-  //________________________________________________________________________
-  // 
+
   
   
   void hasCrashed(Solid s) {
-    if((this.location.sub(s.location)).mag() <= (size / 2) + (s.size / 2)) {
-      println("Crashed!!!!");
+    PVector distance = PVector.sub(location, s.location);
+    
+    if(distance.mag() <= size / 2.0 + s.size / 2.0) {
+      PVector newSpeed1 = PVector.fromAngle(s.speed.heading()).setMag(s.speed.mag());
+      PVector newSpeed2 = PVector.fromAngle(speed.heading()).setMag(speed.mag());
+
+      speed = newSpeed1;
+      //location.add(speed);
+      update();
+      s.speed = newSpeed2;
+      s.update();
+      //s.location.add(s.speed);
     }
   }
   
-  
-  
-  
-  
-  
-  
+  void overlaps(Solid s) {
+    PVector distance = PVector.sub(location, s.location);
+    
+    if(distance.mag() < size / 2.0 + s.size / 2.0 - 2) {
+      PVector newSpeed1 = PVector.fromAngle(s.speed.heading()).setMag(2 * s.speed.mag());
+      PVector newSpeed2 = PVector.fromAngle(speed.heading()).setMag(2 * speed.mag());
+
+      speed = newSpeed1;
+      location.add(speed);
+      s.speed = newSpeed2;
+      s.location.add(s.speed);
+    }
+  }
   
   
   
