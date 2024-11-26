@@ -11,7 +11,7 @@ void setup() {
   //fullScreen();
   textSize(32);
   for(int i = 0; i < n; i++) {
-    mySolids.add(new Solid(i));
+    mySolids.add(new Solid());
     //mySolids.add(new Buzzer());
     //mySolids.add(new Waver(16, 32));
     //mySolids.add(new Blinker());

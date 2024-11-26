@@ -2,8 +2,6 @@ class Solid {
   
   /* CAMPOS DE LA CLASE SOLID */
   
-  String name;
-  
   // Magnitudes
   PVector location;
   PVector speed;
@@ -26,8 +24,7 @@ class Solid {
   
   /* CONSTRUCTORES */
   
-  Solid(int i) {
-    name = "Solid " + Integer.toString(i);
+  Solid() {;
     topSpeed = (int) random(3, 6);
     size = (int) random(16, 32);
     
@@ -47,7 +44,7 @@ class Solid {
   }
   
   Solid(int x, int y) {
-    this(1);
+    this();
     location = new PVector(x, y);
     size = 10;
     r = 255;
@@ -56,7 +53,7 @@ class Solid {
   }
   
   Solid(int red, int green, int blue) {
-    this(1);
+    this();
     r = red;
     g = green;
     b = blue;
@@ -78,6 +75,8 @@ class Solid {
       return;
     }
     
+    speed.limit(topSpeed);
+    
     if(location.x + speed.x > (width - size/2) || location.x + speed.x < size/2) {
       speed.x = speed.x * -1;
     }
@@ -86,7 +85,7 @@ class Solid {
       speed.y = speed.y * -1;
     }
     
-    speed.limit(topSpeed);
+    
     location.add(speed);
   }
   

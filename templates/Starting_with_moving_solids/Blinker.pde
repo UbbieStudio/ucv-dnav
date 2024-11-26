@@ -1,7 +1,7 @@
 class Blinker extends Solid {
   
   Blinker() {
-    super(1);
+    super();
     r = 0;
     g = 0;
     b = 255;

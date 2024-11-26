@@ -5,7 +5,7 @@ class Waver extends Solid {
   boolean increasing;
   
   Waver(int min, int max) {
-    super(1);
+    super();
     minSize = min;
     maxSize = max;
     realSize = size;
@@ -17,7 +17,7 @@ class Waver extends Solid {
   }
   
   Waver(int min, int max, int changeRate) {
-    super(1);
+    super();
     minSize = min;
     maxSize = max;
     realSize = size;
