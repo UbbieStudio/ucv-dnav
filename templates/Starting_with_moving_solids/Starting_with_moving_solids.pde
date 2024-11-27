@@ -16,6 +16,7 @@ void setup() {
     //mySolids.add(new Waver(16, 32));
     //mySolids.add(new Blinker());
   }
+  
   for(int i = 0; i < mySolids.size(); i++) {
     for(int j = i + 1; j < mySolids.size(); j++) {
       mySolids.get(i).overlaps(mySolids.get(j));

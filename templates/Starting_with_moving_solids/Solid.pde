@@ -168,7 +168,7 @@ class Solid {
     PVector distance = PVector.sub(location, s.location);
     
     if(distance.mag() <= size / 2.0 + s.size / 2.0) {
-      //println(name + " crashed " + s.name);
+       
       PVector newSpeed1 = PVector.fromAngle(s.speed.heading()).setMag(s.speed.mag());
       PVector newSpeed2 = PVector.fromAngle(speed.heading()).setMag(speed.mag());
 
