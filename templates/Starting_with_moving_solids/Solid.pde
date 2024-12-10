@@ -140,7 +140,7 @@ class Solid {
       hitTime = System.currentTimeMillis() - start;
       location = new PVector(-99, -99);
       
-      println(this + " hit at " + x + ", " + y + " and after " + showConvertedTime(hitTime));
+      println(this + " hit at " + x + ", " + y + " and after " + prettyTime(hitTime));
     }
   }
   
@@ -247,63 +247,4 @@ class Solid {
     
     return String.join(" ", output);
   }
-  
-  // Diana 
-  String dianaTime(long millis){
-    return (((millis - startTime)/100000) + " hours, " + ((millis - startTime)/10000) + " minutes, and " + (millis - startTime)/1000 + " seconds");
-  }
-  
-  // Jari
-  String showConvertedTime(long time) {
-    long totalMilis = time;
-    int milis = 0;
-    int sec = 0;
-    int min = 0;
-    int hour = 0;
-
-    while (totalMilis > 1000) {
-      totalMilis -= 1000;
-      sec++;
-      while (sec > 60) {
-        sec -= 60;
-        min ++;
-        while (min > 60) {
-          min -= 60;
-          hour ++;
-        }
-      }
-    }
-    milis = (int) totalMilis;
-    if (hour == 0 && min == 0) {
-      //println("  :  " + sec + " segundos " + milis + " milisegundos");
-      return(sec + " segundos " + milis + " milisegundos");
-    } else if (hour == 0) {
-      //println("  :  " + min + " minutos " + sec + " segundos " + milis + " milisegundos");
-      return(min + " minutos " + sec + " segundos " + milis + " milisegundos");
-    } else {
-      //println("  :  " + hour + " horas " + min + " minutos " + sec + " segundos " + milis + " milisegundos");
-      return(hour + " horas " + min + " minutos " + sec + " segundos " + milis + " milisegundos");
-    }
-  }
-  
-  // Nicolás
-  String convertTime(long milis) {
-  long sec = milis / 1000;
-  long min = sec / 60;
-  long ho = min / 60;
-
-  sec = sec % 60;
-  min = min % 60;
-  
-  if(ho > 0){
-  return(ho + " hours : " + min + " minutes : " + milis + " seconds.");
-  }
-  if(min > 0){
-    return(min + " minutes : " + sec + " seconds.");
-  }else{
-    return(milis / 1000.0 + " seconds.");
-  }
-}
-  
-
 }
