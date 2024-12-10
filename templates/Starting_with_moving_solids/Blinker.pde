@@ -17,12 +17,11 @@ class Blinker extends Solid {
         return;
       }
       int dist = (int)(Math.random() * (size * 3 - size + 1)) + size;
-      PVector displacement = speed;
-      displacement.setMag(dist);
-      displacement.rotate((float) Math.random() * 2 * PI);
-      PVector temp = PVector.add(location, displacement);
-      if(temp.x + displacement.x < (width - size/2) && location.x + displacement.x > size/2 && location.y + displacement.y < (height - size/2) && location.y + displacement.y > size/2) {
-        location.add(displacement);
+      speed.setMag(dist);
+      speed.rotate((float) Math.random() * 2 * PI);
+      PVector temp = PVector.add(location, speed);
+      if(temp.x + speed.x < (width - size/2) && location.x + speed.x > size/2 && location.y + speed.y < (height - size/2) && location.y + speed.y > size/2) {
+        location.add(speed);
       }
     }
     else {
