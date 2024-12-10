@@ -1,7 +1,7 @@
 import java.util.Collections;
 import java.util.Random;
 
-int n = 5;
+int n = 3;
 ArrayList<Solid> mySolids = new ArrayList<Solid>();
 long startTime = System.currentTimeMillis();
 
@@ -11,10 +11,10 @@ void setup() {
   //fullScreen();
   textSize(32);
   for(int i = 0; i < n; i++) {
-    mySolids.add(new Solid());
-    //mySolids.add(new Buzzer());
-    //mySolids.add(new Waver(16, 32));
-    //mySolids.add(new Blinker());
+    //mySolids.add(new Solid());
+    mySolids.add(new Buzzer());
+    mySolids.add(new Waver(16, 32));
+    mySolids.add(new Blinker());
   }
   
   for(int i = 0; i < mySolids.size(); i++) {
